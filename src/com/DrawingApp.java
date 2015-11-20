@@ -3,6 +3,8 @@
  */
 package com;
 
+import model.Circle;
+import model.Shape;
 import model.Triangle;
 
 import org.springframework.beans.factory.BeanFactory;
@@ -23,23 +25,14 @@ public class DrawingApp {
 	 */
 	public static void main(String[] args) {
 		AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
-		
+
 		ctx.registerShutdownHook();
-		
+
 		//BeanFactory ctx = new XmlBeanFactory(new FileSystemResource("spring.xml"));
-		
-		Triangle triangle = ctx.getBean("triangle",Triangle.class);
-		
-		triangle.draw();
-		
-		triangle.getPointA().setX(2222);
-		
-		/*System.out.println("triangle "+triangle.hashCode());
-		
-		triangle = ctx.getBean("triangle",Triangle.class);
-		triangle.draw();
-		
-		System.out.println("triangle "+triangle.hashCode());*/
+
+		Shape shape = ctx.getBean("circle",Shape.class);
+
+		shape.draw();
 	}
 
 }

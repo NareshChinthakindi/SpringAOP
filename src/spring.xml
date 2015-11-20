@@ -23,7 +23,7 @@
 	 
 	</bean> -->
 	
-	<bean class="model.Point" id="pointA" >
+	<bean class="model.Point" id="pointA" scope="prototype">
 	  <property name="x" value="${pointA.x}"></property>
 	  <property name="y" value="${pointA.y}"></property>
 	
@@ -61,5 +61,8 @@
 	</bean>
 	
 
+    <bean class="model.Circle" id="circle" >
+	 <property name="center" ref="pointA"></property>
+	</bean>
 
 </beans>

@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContext;
  * @author nchinthakindi
  *
  */
-public class Triangle implements InitializingBean,DisposableBean{
+public class Triangle implements InitializingBean,DisposableBean,Shape{
 	
 	
 	private Point pointA;

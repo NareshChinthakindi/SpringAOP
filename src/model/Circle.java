@@ -7,8 +7,17 @@ package model;
  * @author nchinthakindi
  *
  */
-public class Circle {
+public class Circle implements Shape{
 	private String name;
+	private Point center;
+
+	public Point getCenter() {
+		return center;
+	}
+
+	public void setCenter(Point center) {
+		this.center = center;
+	}
 
 	/**
 	 * @return the name
@@ -28,6 +37,13 @@ public class Circle {
 	
 	public void setName(String name,int age)
 	{
+		
+	}
+
+	@Override
+	public void draw()
+	{
+	   System.out.println("Drwaing Circle ("+center.getX() +", "+center.getY()+")");	
 		
 	}
 }
