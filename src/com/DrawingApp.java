@@ -24,15 +24,17 @@ public class DrawingApp {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 
-		ctx.registerShutdownHook();
+		
 
 		//BeanFactory ctx = new XmlBeanFactory(new FileSystemResource("spring.xml"));
 
 		Shape shape = ctx.getBean("circle",Shape.class);
 
 		shape.draw();
+		
+		//System.out.println(ctx.getMessage("greeting", null, null));
 	}
 
 }

@@ -2,34 +2,30 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
 	http://www.springframework.org/schema/aop 
-	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd " default-init-method="myInit" default-destroy-method="destroy2">
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd" default-init-method="myInit" default-destroy-method="destroy2">
 
-	 <!-- <aop:aspectj-autoproxy /> 
+	  <!-- <aop:aspectj-autoproxy /> --> 
 	 
 	 <bean name="loggingAspect" class="aspect.LogginAspect"></bean>
 
-	<bean name="triangle" class="model.Triangle">
-	 <property name="name" value="Triangle"></property>
-	</bean>
-	
-	<bean name="circle" class="model.Circle">
-	 <property name="name" value="Circle"></property>
-	</bean>
 	
 	<bean name="shapeService" class="service.ShapeService" autowire="byName">
 	 
-	</bean> -->
+	</bean> 
 	
-	<bean class="model.Point" id="pointA" scope="prototype">
+ 	<bean class="model.Point" id="center" scope="prototype">
 	  <property name="x" value="${pointA.x}"></property>
 	  <property name="y" value="${pointA.y}"></property>
 	
 	</bean>
 	
 	<bean class="model.Point" id="pointB" >
+	  <qualifier value="circleReleated"></qualifier>
 	  <property name="x" value="0"></property>
 	  <property name="y" value="20"></property>
 	
@@ -41,7 +37,7 @@
 	
 	</bean>
 	
-	
+	<!-- 
 	<bean class="model.Triangle" id="parenttriangle" abstract="true">
 	  <property name="pointA" ref="pointA"></property>
 	</bean>
@@ -50,7 +46,7 @@
 	 <constructor-arg value="Equilateral"></constructor-arg>
 	 <property name="pointB" ref="pointB"></property>
 	  <property name="pointC" ref="pointC"></property>
-	</bean>
+	</bean> -->
 	
 	<!-- <bean class="com.DisplayNameBeanPostProcessor"/> -->
 	
@@ -60,9 +56,18 @@
 	
 	</bean>
 	
-
-    <bean class="model.Circle" id="circle" >
-	 <property name="center" ref="pointA"></property>
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	
+	    <property name="basenames">
+	     <list>
+	       <value>mymessages</value>
+	     </list>
+	    
+	    </property>
 	</bean>
+	
+  <context:annotation-config/>
+  <context:component-scan base-package="model"/>
 
 </beans>
