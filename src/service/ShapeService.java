@@ -3,6 +3,8 @@
  */
 package service;
 
+import org.springframework.stereotype.Component;
+
 import aspect.Loogable;
 import model.Circle;
 import model.Triangle;
@@ -11,6 +13,7 @@ import model.Triangle;
  * @author nchinthakindi
  *
  */
+@Component
 public class ShapeService {
 
 	private Circle circle;
